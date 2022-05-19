@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="tour_plan_form">
+        <field name="name">tour_plan_form</field>
+        <field name="model">tour.plan</field>
+        <field name="arch" type="xml">
+            <form string="Tour plans form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="tour_number"/>
+                        <field name="start_date"/>
+                        <field name="is_recurring_event"/>
+                        <field name="is_recurring_monday" attrs="{'invisible': [('is_recurring_event', '=', False)]}"/>
+                        <field name="is_recurring_tuesday" attrs="{'invisible': [('is_recurring_event', '=', False)]}"/>
+                        <field name="is_recurring_wednesday"
+                               attrs="{'invisible': [('is_recurring_event', '=', False)]}"/>
+                        <field name="is_recurring_thursday"
+                               attrs="{'invisible': [('is_recurring_event', '=', False)]}"/>
+                        <field name="is_recurring_friday" attrs="{'invisible': [('is_recurring_event', '=', False)]}"/>
+                        <field name="is_recurring_saturday"
+                               attrs="{'invisible': [('is_recurring_event', '=', False)]}"/>
+                        <field name="is_recurring_sunday" attrs="{'invisible': [('is_recurring_event', '=', False)]}"/>
+                        <field name="end_date" attrs="{'invisible': [('is_recurring_event', '=', False)]}"/>
+                        <field name="duration" attrs="{'invisible': [('is_recurring_event', '=', False)]}"/>
+                        <field name="route_length"/>
+                        <field name="fleet_vehicle_id"/>
+                        <field name="driver_id" attrs="{'invisible': [('fleet_vehicle_id', '=', False)]}"/>
+                        <field name="is_driver_lunch_break_included"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="tour_plan_tree">
+        <field name="name">tour_plan_tree</field>
+        <field name="model">tour.plan</field>
+        <field name="arch" type="xml">
+            <tree string="Tour plans tree">
+                <field name="name"/>
+                <field name="tour_number"/>
+                <field name="start_date"/>
+                <field name="is_recurring_event"/>
+                <field name="route_length"/>
+                <field name="driver_id"/>
+                <field name="is_driver_lunch_break_included"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_task_calendar" model="ir.ui.view">
+        <field name="model">tour.plan</field>
+        <field name="arch" type="xml">
+            <calendar date_start="start_date" date_stop="end_date">
+                <field name="name"/>
+                <field name="tour_number"/>
+                <field name="fleet_vehicle_id"/>
+                <field name="driver_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="tour_plan_action" model="ir.actions.act_window">
+        <field name="name">Tour plans</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">tour.plan</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                There is no data
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem name="Tour plans" id="tour_plan_root" sequence="10"/>
+
+
+    <menuitem name="Tour plans" id="orga.tour_plans_menu" parent="tour_plan_root" action="tour_plan_action"
+              sequence="2"/>
+
+</odoo>

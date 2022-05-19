@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tour_plan,access.tour.plan,model_tour_plan,,1,1,1,1
+access_driver_break,access.driver.break,model_driver_break,,1,1,1,1
