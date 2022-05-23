@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="basic_planning_form">
+        <field name="name">basic.planning.form</field>
+        <field name="model">basic.planning</field>
+        <field name="arch" type="xml">
+            <form string="Basic planning form">
+                <sheet>
+                    <group>
+                        <field name="tour_id"/>
+                        <field name="tour_number"/>
+                        <field name="driver_id"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="route_length"/>
+                        <field name="fleet_vehicle_id"/>
+                        <field name="is_driver_lunch_break_included"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="basic_planning_tree">
+        <field name="name">basic.planning.tree</field>
+        <field name="model">basic.planning</field>
+        <field name="arch" type="xml">
+            <tree string="Basic planning tree">
+                <field name="tour_id"/>
+                <field name="tour_number"/>
+                <field name="start_date"/>
+                <field name="route_length"/>
+                <field name="driver_id"/>
+                <field name="fleet_vehicle_id"/>
+                <field name="is_driver_lunch_break_included"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_basic_planning_calendar" model="ir.ui.view">
+        <field name="model">basic.planning</field>
+        <field name="arch" type="xml">
+            <calendar
+                    string="Basic planning calendar"
+                    mode="month"
+                    date_start="start_date"
+                    date_stop="end_date"
+                    color="driver_id">
+                <field name="tour_id"/>
+                <field name="tour_number"/>
+                <field name="fleet_vehicle_id"/>
+                <field name="driver_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="basic_planning_action" model="ir.actions.act_window">
+        <field name="name">Basic planning</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">basic.planning</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                There is no data
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Basic planning" id="orga.basic_planning_menu" parent="tour_plan_root" action="basic_planning_action"
+              sequence="3"/>
+
+</odoo>

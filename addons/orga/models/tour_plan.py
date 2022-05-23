@@ -75,6 +75,7 @@ class TourPlan(models.Model):
 
     driver_id = fields.Many2one(
         related='fleet_vehicle_id.driver_id',
+        string='Driver',
     )
 
     fleet_vehicle_id = fields.Many2one(

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="vacation_schedule_form">
+            <field name="name">vacation.schedule.form</field>
+            <field name="model">vacation.schedule</field>
+            <field name="arch" type="xml">
+                <form string="Vacation schedule form">
+                    <sheet>
+                        <group>
+                            <field name="driver_id"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="duration"/>
+                            <field name="vacation_type"/>
+                            <field name="notes"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="vacation_schedule_tree">
+            <field name="name">vacation.schedule.tree</field>
+            <field name="model">vacation.schedule</field>
+            <field name="arch" type="xml">
+                <tree string="Vacation schedule tree">
+                    <field name="driver_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="duration"/>
+                    <field name="vacation_type"/>
+                    <field name="notes"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_vacation_schedule_calendar" model="ir.ui.view">
+            <field name="model">vacation.schedule</field>
+            <field name="arch" type="xml">
+                <calendar
+                        string="Vacation schedule calendar"
+                        mode="month"
+                        date_start="start_date"
+                        date_stop="end_date"
+                        color="driver_id">
+                    <field name="driver_id"/>
+                    <field name="duration"/>
+                    <field name="vacation_type"/>
+                    <field name="notes"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="vacation_schedule_action" model="ir.actions.act_window">
+            <field name="name">Vacation schedule</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vacation.schedule</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_empty_folder">
+                    There is no data
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Vacation schedule"
+                  id="orga.vacation_schedule_menu"
+                  parent="tour_plan_root"
+                  action="vacation_schedule_action"
+                  sequence="5"/>
+
+    </data>
+</odoo>

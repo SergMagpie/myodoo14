@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_tour_plan,access.tour.plan,model_tour_plan,,1,1,1,1
 access_driver_break,access.driver.break,model_driver_break,,1,1,1,1
+access_basic_planning,access.basic.planning,model_basic_planning,,1,1,1,1
+access_vacation_schedule,access.vacation.schedule,model_vacation_schedule,,1,1,1,1
+access_vacation_type,access.vacation.type,model_vacation_type,,1,1,1,1

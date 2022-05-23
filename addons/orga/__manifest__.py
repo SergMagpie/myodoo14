@@ -21,6 +21,8 @@
         'security/ir.model.access.csv',
         'views/tour_plan.xml',
         'views/driver_break.xml',
+        'views/vacation_schedule.xml',
+        'views/basic_planing.xml',
     ],
     'demo': [],
     'installable': True,
