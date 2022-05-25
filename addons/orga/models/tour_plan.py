@@ -83,6 +83,14 @@ class TourPlan(models.Model):
         string='Fleet vehicle',
     )
 
+    time_start_work_day = fields.Float(
+        string='Start work day',
+    )
+
+    time_end_work_day = fields.Float(
+        string='Start end day',
+    )
+
     is_driver_lunch_break_included = fields.Boolean(
         string='Is_driver_lunch_break_included',
     )
@@ -94,3 +102,9 @@ class TourPlan(models.Model):
                 record.duration = (record.end_date - record.start_date).days
             else:
                 record.duration = 0
+
+    @api.model
+    def create(self, vals_list):
+        rez = super(TourPlan, self).create(vals_list)
+
+        return rez

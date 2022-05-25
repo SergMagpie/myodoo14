@@ -27,6 +27,8 @@
                         <field name="route_length"/>
                         <field name="fleet_vehicle_id"/>
                         <field name="driver_id" attrs="{'invisible': [('fleet_vehicle_id', '=', False)]}"/>
+                        <field name="time_start_work_day" widget="float_time"/>
+                        <field name="time_end_work_day" widget="float_time"/>
                         <field name="is_driver_lunch_break_included"/>
                     </group>
                 </sheet>
